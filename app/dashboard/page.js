@@ -42,7 +42,7 @@ export default function Dashboard() {
               className="w-full h-48 object-cover rounded-md mb-4"
             />
             <h3 className="text-lg font-bold mb-2">Quiz 1</h3>
-            <p className="text-gray-700 mb-4">Kiralarsın</p>
+            <p className="text-gray-700 mb-4">&apos;Kiralarsın&apos;</p>
             <button className="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600">Quiz'e Başla</button>
           </div>
           <div className="bg-white p-6 rounded-lg shadow-lg">
@@ -54,7 +54,7 @@ export default function Dashboard() {
               className="w-full h-48 object-cover rounded-md mb-4"
             />
             <h3 className="text-lg font-bold mb-2">Quiz 2</h3>
-            <p className="text-gray-700 mb-4">Dizi Film</p>
+            <p className="text-gray-700 mb-4">&apos;Dizi Film&apos;</p>
             <button className="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600">Quiz'e Başla</button>
           </div>
         </div>
