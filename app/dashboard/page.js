@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import Link from 'next/link';
+import Image from 'next/image';
 
 export default function Dashboard() {
   const [username, setUsername] = useState('');
@@ -13,7 +13,7 @@ export default function Dashboard() {
     if (storedUsername) {
       setUsername(storedUsername);
     } else {
-      router.push('/signin'); // Doğru route'a yönlendirin
+      router.push('/signin'); 
     }
   }, [router]);
 
@@ -34,13 +34,25 @@ export default function Dashboard() {
         <h2 className="text-xl font-semibold mb-4">Mevcut Quizler</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className="bg-white p-6 rounded-lg shadow-lg">
-            <img src="/kiralarsın.png" alt="Quiz 1" className="w-full h-48 object-cover rounded-md mb-4" />
+            <Image
+              src="/kiralarsın.png"
+              alt="Quiz 1"
+              width={500} // Görüntü genişliği
+              height={300} // Görüntü yüksekliği
+              className="w-full h-48 object-cover rounded-md mb-4"
+            />
             <h3 className="text-lg font-bold mb-2">Quiz 1</h3>
             <p className="text-gray-700 mb-4">Kiralarsın</p>
             <button className="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600">Quiz'e Başla</button>
           </div>
           <div className="bg-white p-6 rounded-lg shadow-lg">
-            <img src="/manga.jpg" alt="Quiz 2" className="w-full h-48 object-cover rounded-md mb-4" />
+            <Image
+              src="/manga.jpg"
+              alt="Quiz 2"
+              width={500} // Görüntü genişliği
+              height={300} // Görüntü yüksekliği
+              className="w-full h-48 object-cover rounded-md mb-4"
+            />
             <h3 className="text-lg font-bold mb-2">Quiz 2</h3>
             <p className="text-gray-700 mb-4">Dizi Film</p>
             <button className="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600">Quiz'e Başla</button>
