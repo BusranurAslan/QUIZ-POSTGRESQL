@@ -17,8 +17,8 @@ const sequelize = process.env.DATABASE_URL
     });
 
 const User = require('./user')(sequelize, DataTypes);
-const Question = require('./question')(sequelize, DataTypes);
-const Answer = require('./answer')(sequelize, DataTypes);
+const Question = require('./Question')(sequelize, DataTypes);
+const Answer = require('./Answer')(sequelize, DataTypes);
 
 
 Object.keys(sequelize.models).forEach((modelName) => {
