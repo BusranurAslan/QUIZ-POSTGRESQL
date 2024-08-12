@@ -39,8 +39,8 @@ export default function Dashboard() {
             <Image
               src="/kiralarsın.png"
               alt="Quiz 1"
-              width={500} // Görüntü genişliği
-              height={300} // Görüntü yüksekliği
+              width={500} 
+              height={300} 
               className="w-full h-48 object-cover rounded-md mb-4"
             />
             <h3 className="text-lg font-bold mb-2">Quiz 1</h3>
@@ -51,8 +51,8 @@ export default function Dashboard() {
             <Image
               src="/manga.jpg"
               alt="Quiz 2"
-              width={500} // Görüntü genişliği
-              height={300} // Görüntü yüksekliği
+              width={500} 
+              height={300} 
               className="w-full h-48 object-cover rounded-md mb-4"
             />
             <h3 className="text-lg font-bold mb-2">Quiz 2</h3>
