@@ -1,7 +1,6 @@
-require('dotenv').config();
-
-const { Sequelize, DataTypes } = require('sequelize');
-const pg = require('pg'); 
+import 'dotenv/config'; 
+import { Sequelize, DataTypes } from 'sequelize';
+import pg from 'pg'; 
 
 const isProduction = process.env.NODE_ENV === 'production';
 
@@ -10,23 +9,28 @@ const sequelize = process.env.DATABASE_URL
       dialect: 'postgres',
       dialectModule: pg,
       dialectOptions: isProduction
-      ? {
-        ssl: {
-          require: true,
-          rejectUnauthorized: false,
-        },
-      }
-      : {},
+        ? {
+            ssl: {
+              require: true,
+              rejectUnauthorized: false,
+            },
+          }
+        : {},
     })
   : new Sequelize('postgres://postgres:1234@localhost:5432/busraroman', {
       dialect: 'postgres',
-      dialectModule: pg, 
+      dialectModule: pg,
     });
 
 
-const User = require('./user')(sequelize, DataTypes);
-const Question = require('./Question')(sequelize, DataTypes);
-const Answer = require('./Answer')(sequelize, DataTypes);
+import UserModel from './user';
+import QuestionModel from './Question';
+import AnswerModel from './Answer';
+
+
+const User = UserModel(sequelize, DataTypes);
+const Question = QuestionModel(sequelize, DataTypes);
+const Answer = AnswerModel(sequelize, DataTypes);
 
 
 Object.keys(sequelize.models).forEach((modelName) => {
@@ -46,4 +50,4 @@ const db = {
   },
 };
 
-module.exports = db;
+export default db;

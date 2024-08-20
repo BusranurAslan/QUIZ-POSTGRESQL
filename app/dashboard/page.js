@@ -6,6 +6,7 @@ import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 
+
 export default function Dashboard() {
   const [username, setUsername] = useState('');
   const router = useRouter();
@@ -23,6 +24,15 @@ export default function Dashboard() {
     localStorage.removeItem('username');
     router.push('../home');
   };
+  const startQuiz = (quizId) => {
+    if (!quizId) {
+      console.error("No quizId provided");
+      return;
+    }
+    console.log("Starting quiz with ID:", quizId); 
+    router.push(`/quiz/${quizId}`);
+  };
+  
 
   return (
     <div className="min-h-screen bg-gray-100">
@@ -45,7 +55,8 @@ export default function Dashboard() {
             />
             <h3 className="text-lg font-bold mb-2">Quiz 1</h3>
             <p className="text-gray-700 mb-4">&apos;Kiralarsın&apos;</p>
-            <button className="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600">Quiz'e Başla</button>
+            <button onClick={() => startQuiz('quiz1')}
+            className="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600">Quiz'e Başla</button>
           </div>
           <div className="bg-white p-6 rounded-lg shadow-lg">
             <Image
@@ -57,7 +68,8 @@ export default function Dashboard() {
             />
             <h3 className="text-lg font-bold mb-2">Quiz 2</h3>
             <p className="text-gray-700 mb-4">&apos;Dizi Film&apos;</p>
-            <button className="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600">Quiz'e Başla</button>
+            <button onClick={() => startQuiz('quiz2')}
+            className="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600">Quiz'e Başla</button>
           </div>
         </div>
       </div>

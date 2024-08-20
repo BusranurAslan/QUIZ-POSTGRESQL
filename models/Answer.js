@@ -1,22 +1,29 @@
 module.exports = (sequelize, DataTypes) => {
-    const Answer = sequelize.define('Answer', {
-      answerText: {
-        type: DataTypes.TEXT,
-        allowNull: false,
+  const Answer = sequelize.define('Answer', {
+    answerText: {
+      type: DataTypes.TEXT,
+      allowNull: false,
+    },
+    isCorrect: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+    },
+    questionId: {  
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      references: {
+        model: 'Questions', 
+        key: 'id'
       },
-      isCorrect: {
-        type: DataTypes.BOOLEAN,
-        allowNull: false,
-      },
+    }
+  });
+
+  Answer.associate = (models) => {
+    Answer.belongsTo(models.Question, {
+      foreignKey: 'questionId',
+      as: 'questions',
     });
-  
-    Answer.associate = (models) => {
-      Answer.belongsTo(models.Question, {
-        foreignKey: 'questionId',
-        as: 'question',
-      });
-    };
-  
-    return Answer;
   };
-  
+
+  return Answer;
+};

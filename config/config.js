@@ -1,21 +1,32 @@
 require('dotenv').config();
 
-
 module.exports = {
-  development: {
-    username: process.env.DB_USERNAME,
-    password: process.env.DB_PASSWORD,
-    database: process.env.DB_NAME,
-    host: process.env.DB_HOST,
+  local: {
+    username: process.env.DB_USERNAME || 'root',
+    password: process.env.DB_PASSWORD || null,
+    database: process.env.DB_NAME || 'database_dev',
+    host: process.env.DB_HOST || '127.0.0.1',
     dialect: 'postgres',
-    dialectModule: pg,
-    migrationStorage: 'json',
-    migrationStoragePath: 'sequelize-meta.json',
-    seederStorage: 'json',
-    seederStoragePath: 'sequelize-seeds.json',
-    dialectOptions: {
-      useUTC: false, 
-    },
-    timezone: '+03:00', 
+  },
+  development: {
+    username: process.env.DB_USERNAME || 'root',
+    password: process.env.DB_PASSWORD || null,
+    database: process.env.DB_NAME || 'database_dev',
+    host: process.env.DB_HOST || '127.0.0.1',
+    dialect: 'postgres',
+  },
+  test: {
+    username: process.env.DB_USERNAME || 'root',
+    password: process.env.DB_PASSWORD || null,
+    database: process.env.DB_NAME || 'database_test',
+    host: process.env.DB_HOST || '127.0.0.1',
+    dialect: 'postgres',
+  },
+  production: {
+    username: process.env.DB_USERNAME || 'root',
+    password: process.env.DB_PASSWORD || null,
+    database: process.env.DB_NAME || 'database',
+    host: process.env.DB_HOST || '127.0.0.1',
+    dialect: 'postgres',
   },
 };

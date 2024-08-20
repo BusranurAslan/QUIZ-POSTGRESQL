@@ -1,3 +1,4 @@
+
 'use strict';
 
 module.exports = {
@@ -12,20 +13,26 @@ module.exports = {
         type: Sequelize.TEXT,
         allowNull: false,
       },
-      createdAt: {
-        type: Sequelize.DATE,
+      quizId: {
+        type: Sequelize.INTEGER,
         allowNull: false,
+        onUpdate: 'CASCADE',
+        onDelete: 'CASCADE',
+      },
+      createdAt: {
+        allowNull: false,
+        type: Sequelize.DATE,
         defaultValue: Sequelize.literal('CURRENT_TIMESTAMP'),
       },
       updatedAt: {
-        type: Sequelize.DATE,
         allowNull: false,
+        type: Sequelize.DATE,
         defaultValue: Sequelize.literal('CURRENT_TIMESTAMP'),
-      },
+      }
     });
   },
-
-  down: async (queryInterface) => {
+  
+  down: async (queryInterface, Sequelize) => {
     await queryInterface.dropTable('Questions');
-  },
+  }
 };

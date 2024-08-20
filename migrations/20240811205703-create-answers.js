@@ -20,7 +20,7 @@ module.exports = {
       questionId: {
         type: Sequelize.INTEGER,
         references: {
-          model: 'Questions', // Questions tablosuna referans
+          model: 'Questions', 
           key: 'id',
         },
         onUpdate: 'CASCADE',
