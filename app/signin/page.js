@@ -3,23 +3,20 @@
 import { useState } from 'react';
 import axios from 'axios';
 import Link from 'next/link';
-import { useRouter } from 'next/navigation'; 
+import { useRouter } from 'next/navigation';
 
 export default function SignIn() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const router = useRouter(); 
+  const router = useRouter();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       const response = await axios.post('/api/signin', { username, password });
-      console.log('API yanıtı:', response);
       if (response.status === 200) {
-        alert('Giriş başarılı!');
-        localStorage.setItem('username', username); // Kullanıcı adını localStorage'a kaydet
-        // Giriş başarılıysa, dashboard sayfasına yönlendirin
-        router.push('/dashboard'); // router.push kullanarak yönlendirin
+        localStorage.setItem('username', username);
+        router.push('/dashboard');
       } else {
         alert(response.data.message);
       }

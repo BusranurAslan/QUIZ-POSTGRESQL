@@ -6,13 +6,15 @@ export async function POST(req) {
 
   try {
     const hashedPassword = await bcrypt.hash(password, 10);
-    await db.models.User.create({
+    const user = await db.models.User.create({
       username,
       email,
       password: hashedPassword,
       gender,
       birthdate,
     });
+
+    
     return new Response(JSON.stringify({ message: 'Kayıt başarılı!' }), {
       status: 201,
       headers: { 'Content-Type': 'application/json' },

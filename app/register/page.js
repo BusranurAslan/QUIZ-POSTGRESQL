@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import axios from 'axios';
-import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 
 export default function Register() {
   const [username, setUsername] = useState('');
@@ -10,15 +10,22 @@ export default function Register() {
   const [password, setPassword] = useState('');
   const [gender, setGender] = useState('');
   const [birthdate, setBirthdate] = useState('');
+  const router = useRouter();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       await axios.post('/api/register', { username, email, password, gender, birthdate });
-      alert('Kayıt başarılı!');
+      const response = await axios.post('/api/signin', { username, password });
+      if (response.status === 200) {
+        localStorage.setItem('username', username);
+        router.push('/dashboard');
+      } else {
+        alert(response.data.message);
+      }
     } catch (error) {
       console.error(error);
-      alert('Kayıt başarısız!');
+      alert('Kayıt veya giriş başarısız!');
     }
   };
 
@@ -82,12 +89,9 @@ export default function Register() {
             />
           </div>
           <button type="submit" className="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600">
-            Kayıt Ol
+            Kayıt Ol ve Giriş Yap
           </button>
         </form>
-        <div className='mt-4 text-center'>
-          <p>Zaten bir hesabın var mı? <Link href="../signin" className='text-blue-500 hover:underline'>Giriş Yap</Link></p>
-        </div>
       </div>
     </div>
   );

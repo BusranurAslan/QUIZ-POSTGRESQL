@@ -15,14 +15,15 @@ export default function Dashboard() {
     const storedUsername = localStorage.getItem('username');
     if (storedUsername) {
       setUsername(storedUsername);
-    } else {
-      router.push('/signin'); 
+   } else {
+    router.push('/signin'); 
     }
-  }, [router]);
+   }, [router]);
+    
 
   const handleLogout = () => {
     localStorage.removeItem('username');
-    router.push('../home');
+    router.push('/');
   };
   const startQuiz = (quizId) => {
     if (!quizId) {
