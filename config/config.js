@@ -13,7 +13,14 @@ module.exports = {
     password: process.env.DB_PASSWORD || null,
     database: process.env.DB_NAME || 'database_dev',
     host: process.env.DB_HOST || '127.0.0.1',
+    port: process.env.DB_PORT || 5432,
     dialect: 'postgres',
+    dialectOptions:{
+      ssl:{
+        require: true,
+        rejectUnauthorized: false
+      }
+    },
   },
   test: {
     username: process.env.DB_USERNAME || 'root',
@@ -27,6 +34,13 @@ module.exports = {
     password: process.env.DB_PASSWORD || null,
     database: process.env.DB_NAME || 'database',
     host: process.env.DB_HOST || '127.0.0.1',
+    port: process.env.DB_PORT || 5432,
     dialect: 'postgres',
+    dialectOptions:{
+      ssl:{
+        require: true,
+        rejectUnauthorized: false
+      }
+    },
   },
 };
